@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ *
  * バリデーション管理
  * @author tkonishi
  *
@@ -8,28 +8,28 @@
 class Util_Validator
 {
 	/**
-	 * 
+	 *
 	 * 配列判定.
 	 * @param array $value
 	 * @param bool $isEmpty
 	 */
 	public static function isArray( $value, $isEmpty = false )
 	{
-		$result = false;
-		if( is_array( $value ) ){
+		$result = is_array( $value );
+		if( $result === true ){
+			//空の配列を許容するか否かを判定
 			if( $isEmpty === true ){
 				$result = self::isEmpty( $value );
-			} else {
-				$result = true;
 			}
 		}
 		return $result;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 空判定.
 	 * @param mixed $value
+	 * @return boolean
 	 */
 	public static function isEmpty( $value )
 	{
@@ -49,13 +49,13 @@ class Util_Validator
 		}
 		return $result;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 文字列長判定.
-	 * 
+	 *
 	 * 数値、もしくは文字列のみそのLength長を調べ結果を返す.
-	 * 
+	 *
 	 * @param mixed $value
 	 */
 	public function isLength( $value )
@@ -68,9 +68,9 @@ class Util_Validator
 		}
 		return $result;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * Boolean型判定.
 	 * @param boolean $value
 	 */
@@ -78,9 +78,9 @@ class Util_Validator
 	{
 		return is_bool( $value );
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 文字列判定.
 	 * @param unknown_type $value
 	 */
@@ -92,9 +92,9 @@ class Util_Validator
 		}
 		return $result;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * マルチバイト文字判定
 	 * @param String $value
 	 * @param String $encoding
@@ -109,13 +109,13 @@ class Util_Validator
 		}
 		return $result;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 数値判定.
-	 * 
+	 *
 	 * 16進数文字列や指数文字列も false として返却
-	 * 
+	 *
 	 * @param unknown_type $value
 	 */
 	public static function isNumeric( $value )
@@ -128,9 +128,9 @@ class Util_Validator
 		}
 		return $result;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * ファイルパスの存在有無判定.
 	 * @param String $path
 	 */
@@ -138,5 +138,5 @@ class Util_Validator
 	{
 		return file_exists( $path );
 	}
-	
+
 }
